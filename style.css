@@ -1,0 +1,29 @@
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.bg {
+  /* The image used */
+  background-image: url("./media/TCRMC_Lobby-Night-Shot.jpg");
+
+  /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.nav-link {
+  color: lightgray;
+}
+
+.nav-link .active {
+  color: white;
+}
+
+.nav-link:hover {
+  color: white;
+}
