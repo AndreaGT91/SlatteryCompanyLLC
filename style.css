@@ -3,6 +3,14 @@ body, html {
   margin: 0;
 }
 
+.bg {
+  background-image: url("./media/TCRMC_Lobby-Night-Shot.jpg");
+  height: 100%; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 @media (min-width : 992px) {
   .offcanvas {
     visibility      : visible;
@@ -10,7 +18,7 @@ body, html {
     background      : none;
     border          : none;
     justify-content : end;
-    color           : purple;
+    color           : gray;
   }
 }
 
@@ -21,93 +29,26 @@ body, html {
   .offcanvas-start-lg {
     top          : 0;
     left         : 0;
-    border-right : 1px solid rgba(0, 0, 0, .2);
     transform    : translateX(-100%);
+    z-index: 1;
   }
 }
 
-.navbar-nav li a {
+a.nav-link:hover {
+  background: rgb(64, 64, 64);
+  color: white;
+  transition: 0.5s all linear;
+}
+
+a.nav-link:active {
   color: white !important;
-}
-/* .navbar-nav li a {
-  color: white !important;
+  font-weight: bold;
 }
 
-@media (max-width: 991.98px) {
-  .offcanvas-collapse {
-    position: fixed;
-    top: 56px; 
-    bottom: 0;
-    left: 100%;
-    width: 100%;
-    padding-right: 1rem;
-    padding-left: 1rem;
-    overflow-y: auto;
-    visibility: hidden;
-    background-color: #343a40;
-    transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
-  }
-  .offcanvas-collapse.open {
-    visibility: visible;
-    transform: translateX(-100%);
-  }
-} */
-
-.bg {
-  /* The image used */
-  background-image: url("./media/TCRMC_Lobby-Night-Shot.jpg");
-
-  /* Full height */
-  height: 100%; 
-
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-/* .navbar-toggler {
+.closebtn {
+  position: relative;
+  float: right;
   color: white;
+  font-size: xx-large;
+  text-decoration: none;
 }
-
-.material-icons {
-  color: white;
-} */
-
-/* .nav-link {
-  color: lightgray;
-}
-
-.nav-link .active {
-  color: white;
-}
-
-.nav-link:hover {
-  color: white;
-} */
-
-/* .navbar, .navbar-inverse {
-	border-radius: 0;
-	border: none;
-	margin-bottom: 0;
-	min-height: 80px;
-}
-
-.nav li {
-	display: inline;
-	color: white;
-}
-
-.navbar-inverse .navbar-nav > li > a {
-	color: #ffffff;
-	font-family: Lato;
-	font-size: 1.7em;
-	font-weight: 300;
-	padding: 30px 25px 33px 25px;
-}
-
-.navbar-inverse .navbar-nav li a:hover {
-	background-color: #444444;
-	transition: 0.7s all linear;
-	height: 100%;
-} */
