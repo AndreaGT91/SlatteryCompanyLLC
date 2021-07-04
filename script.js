@@ -1,9 +1,7 @@
-function mainScript() {
-  const offcanvasToggle = document.querySelector("[data-bs-toggle='offcanvas']");
-  const offcanvasCollapse = document.querySelector(".offcanvas-collapse");
-  offcanvasToggle.addEventListener("click", function () {
-    offcanvasCollapse.classList.toggle("open");
-  });
-};
+"use strict";
 
-mainScript();
+$(function() {
+  $(".navbar-toggler")[0].addEventListener("click", function () {
+    $(".offcanvas-collapse")[0].classList.toggle("open");
+  });
+});

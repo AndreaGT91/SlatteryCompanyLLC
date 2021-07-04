@@ -11,44 +11,23 @@ body, html {
   background-size: cover;
 }
 
-@media (min-width : 992px) {
-  .offcanvas {
-    visibility      : visible;
-    position        : relative;
-    background      : none;
-    border          : none;
-    justify-content : end;
-    color           : gray;
+@media (max-width: 991.98px) {
+  .offcanvas-collapse {
+    position: fixed;
+    top: 56px; /* Height of navbar */
+    bottom: 0;
+    left: 100%;
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    overflow-y: auto;
+    visibility: hidden;
+    background-color: #343a40;
+    transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
   }
-}
 
-@media (max-width : 992px) {
-  .offcanvas {
-    width : 250px !important;
+  .offcanvas-collapse.open {
+    visibility: visible;
+    transform: translateX(-100%);
   }
-  .offcanvas-start-lg {
-    top          : 0;
-    left         : 0;
-    transform    : translateX(-100%);
-    z-index: 1;
-  }
-}
-
-a.nav-link:hover {
-  background: rgb(64, 64, 64);
-  color: white;
-  transition: 0.5s all linear;
-}
-
-a.nav-link:active {
-  color: white !important;
-  font-weight: bold;
-}
-
-.closebtn {
-  position: relative;
-  float: right;
-  color: white;
-  font-size: xx-large;
-  text-decoration: none;
 }
