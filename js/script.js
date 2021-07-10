@@ -5,5 +5,5 @@ $(function() {
     $(".offcanvas-collapse")[0].classList.toggle("open");
   });
 
-  AOS.init(); // Initialize Animate on Scroll library 
+  AOS.init({duration: 1500}); // Initialize Animate on Scroll library 
 });

@@ -1,14 +1,13 @@
-body, html {
+html {
   height: 100%;
   margin: 0;
 }
 
-.bg {
-  background-image: url("../media/TCRMC_Lobby-Night-Shot.jpg");
-  height: 100%; 
-  background-position: center;
+body {
+  background-position: 0px 56px; /* Height of navbar */
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 @media (max-width: 992px) {
