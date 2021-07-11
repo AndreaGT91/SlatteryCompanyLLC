@@ -31,13 +31,13 @@ class Header extends HTMLElement {
             <div class="navbar-collapse offcanvas-collapse" id="collapseMenu">
               <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                  <a class="nav-link" id="home-link" href="index.html">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="portfolio.html">Portfolio</a>
+                  <a class="nav-link" id="portfolio-link" href="portfolio.html">Portfolio</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="about.html">About</a>
+                  <a class="nav-link" id="about-link" href="about.html">About</a>
                 </li>
                 <a class="nav-link" href="mailto:JosephJohnSlatteryJr@SlatteryCompanyLLC.com">Contact</a>
                 </li>
