@@ -1,6 +1,6 @@
 "use strict";
 
-$(function() {
+$(() => {
   // Set onclick handler to open/close side menu when hamburger clicked on mobile
   $(".navbar-toggler").click(() => {
     $(".offcanvas-collapse")[0].classList.toggle("open");
