@@ -5,9 +5,18 @@ html {
 
 body {
   background-position: 0px 56px; /* Height of navbar */
+  background-color: black; /* default when no picture */
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+}
+
+.carousel-item {
+  max-height: 100vmin;
+}
+
+img {
+  object-fit: contain !important;
 }
 
 @media (max-width: 992px) {
