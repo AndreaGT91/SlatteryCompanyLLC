@@ -11,12 +11,9 @@ body {
   background-attachment: fixed;
 }
 
-.carousel-item {
-  max-height: 100vmin;
-}
-
 img {
-  object-fit: contain !important;
+  max-width: 100vmax;
+  max-height: 100vmin;
 }
 
 @media (max-width: 992px) {
