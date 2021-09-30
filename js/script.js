@@ -22,6 +22,10 @@ $(() => {
     $("#about-link").addClass("active");
     $("#about-link").parent().attr("aria-current", "page");
   }
+  else if (window.location.pathname.includes("contact")) {
+    $("#contact-link").addClass("active");
+    $("#contact-link").parent().attr("aria-current", "page");
+  }
   else {
     $("#home-link").addClass("active");
     $("#home-link").parent().attr("aria-current", "page");
@@ -123,6 +127,9 @@ function setupPortfolio() {
   if ((numItems == 0) && (projects.length > 0)) {
     let newIndicator;
     let newInner;
+    // let captionHeight;
+    // let imageHeight;
+    // let indicatorPosition;
 
     for (let i=0; i<projects.length; i++) {
       newIndicator = $(`<button type='button' 
@@ -130,10 +137,12 @@ function setupPortfolio() {
           data-bs-slide-to='${i}' 
           aria-label='${projects[i].title}'>
         </button>`);
+        // <div class='carousel-caption d-block bg-dark' id='caption-${i}'> 
       newInner = $(`<div class='carousel-item'> 
-          <img src='${projects[i].filename}' class='mx-auto d-block' 
+          <img class='mx-auto d-block' id='img-${i}' 
+            src='${projects[i].filename}' 
             alt='${projects[i].title}'> 
-          <div class='carousel-caption d-block'> 
+          <div class='carousel-caption d-block' id='caption-${i}'> 
             <h5>${projects[i].title}</h5> 
             <p>${projects[i].description}</p> 
           </div>
@@ -148,6 +157,16 @@ function setupPortfolio() {
 
       newIndicator.appendTo(carouselIndicators);
       newInner.appendTo(carouselInner);
+
+      // captionHeight = $(`#caption-${i}`).height();
+      // imageHeight = window.innerHeight - captionHeight - 56;
+      // $(`#img-${i}`).height(imageHeight);
+      // $(`#img-${i}`).css("max-height", `${imageHeight}px`);
+
+      // indicatorPosition = imageHeight - carouselIndicators.height();
+      // carouselIndicators.css("top", `${indicatorPosition}px`);
+      // carouselIndicators[0].style.bottom = `${captionHeight}px`;
+      // carouselIndicators.css("bottom",`${indicatorPosition}px`);
     }; // end for loop to add elements
   }; // end build
 }; // end function setupPortfolio
