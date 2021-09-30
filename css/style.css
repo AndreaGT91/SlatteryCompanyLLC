@@ -4,6 +4,7 @@ html {
 }
 
 body {
+  font-family: Garamond, serif;
   background-position: 0px 56px; /* Height of navbar */
   background-color: black; /* default when no picture */
   background-repeat: no-repeat;
