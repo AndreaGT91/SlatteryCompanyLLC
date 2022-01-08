@@ -25,10 +25,10 @@ img {
   max-height: 100vmin;
 }
 
-.max-width-500 {
+.max-width-600 {
   position: relative;
   top: 20px;
-  max-width: 500px;
+  max-width: 600px;
   background: rgba(200, 200, 200, 0.5); /* For <form> only */
 }
 

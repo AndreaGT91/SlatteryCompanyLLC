@@ -59,7 +59,7 @@ function setupPortfolio() {
           Care unit, and 56 private inpatient rooms &bull; 4 surgical suites, 
           mother/baby unit, and Imaging Services Department`
       },
-      { "title": "St. Mary's Sacred Heart Hospital, Physician Center 1",
+      { "title": "St. Mary's Sacred Heart Wellness Center",
         "filename": "./media/Ty-Cobb-Physicians-Center.jpg",
         "description": `Roles: Business development, grant acquisitions, capital  
           raising, capital partner relationship management, tenant leasing and 
