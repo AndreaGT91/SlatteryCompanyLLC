@@ -1,6 +1,7 @@
 "use strict";
 
-const mediaPath = window.location.protocol + "//" + window.location.hostname + "/media/portfolio/images/";
+// const mediaPath = window.location.protocol + "//" + window.location.hostname + "/media/";
+const mediaPath = "./media/";
 
 // On page load
 $(() => {
