@@ -1,5 +1,7 @@
 "use strict";
 
+const mediaPath = window.location.protocol + "//" + window.location.hostname + "/media/portfolio/images/";
+
 // On page load
 $(() => {
   // Set onclick handler to open/close side menu when hamburger clicked on mobile
@@ -21,6 +23,7 @@ $(() => {
   else if (window.location.pathname.includes("about")) {
     $("#about-link").addClass("active");
     $("#about-link").parent().attr("aria-current", "page");
+    setupAbout();
   }
   else if (window.location.pathname.includes("contact")) {
     $("#contact-link").addClass("active");
@@ -37,15 +40,15 @@ function setupPortfolio() {
   const projects = 
     [
       { "title": "Villas at River Park (1 of 2)",
-        "filename": "./media/Johns-Creek-1.jpg",
+        "filename": "./media/portfolio/images/Johns-Creek-1.jpg",
         "description": `(Under development)`
       },
       { "title": "Villas at River Park (2 of 2)",
-        "filename": "./media/Johns-Creek-2.jpg",
+        "filename": "./media/portfolio/images/Johns-Creek-2.jpg",
         "description": `(Under development)`
       },
       { "title": "St. Mary's Sacred Heart Hospital (1 of 2)",
-        "filename": "./media/St-Marys-Sacred-Heart-North.jpg",
+        "filename": "./media/portfolio/images/St-Marys-Sacred-Heart-North.jpg",
         "description": `Roles: Business development, grants and land acquisitions, 
           capital raising, capital partner relationship management. 
           Full-service general acute care hospital located in Lavonia, Georgia.
@@ -53,14 +56,14 @@ function setupPortfolio() {
           St. Mary's Health Care System (Athens, GA).`
       },
       { "title": "St. Mary's Sacred Heart Hospital (2 of 2)",
-        "filename": "./media/St-Marys-Sacred-Heart-South.jpg",
+        "filename": "./media/portfolio/images/St-Marys-Sacred-Heart-South.jpg",
         "description": `155,000 square foot full-service hospital on a 39 
           acre campus in Lavonia, Georgia &bull; 24/7 Emergency Department, Critical 
           Care unit, and 56 private inpatient rooms &bull; 4 surgical suites, 
           mother/baby unit, and Imaging Services Department`
       },
       { "title": "St. Mary's Sacred Heart Wellness Center",
-        "filename": "./media/Ty-Cobb-Physicians-Center.jpg",
+        "filename": "./media/portfolio/images/Ty-Cobb-Physicians-Center.jpg",
         "description": `Roles: Business development, grant acquisitions, capital  
           raising, capital partner relationship management, tenant leasing and 
           building management. Two-story, 35,000 square foot medical office building 
@@ -68,7 +71,7 @@ function setupPortfolio() {
           of St. Mary's Sacred Heart Hospital campus.`
       },
       { "title": "Clearview Physicians Center 1 (1 of 2)",
-        "filename": "./media/Clearview-PC-Bldg1-1.jpg",
+        "filename": "./media/portfolio/images/Clearview-PC-Bldg1-1.jpg",
         "description": `Roles: Business development, capital raising, capital 
           partner relationship management, tenant leasing and building management. 
           Two-story, 38,000 square foot medical office building (MOB) in Monroe, 
@@ -77,35 +80,35 @@ function setupPortfolio() {
           Medical Center.`
       },
       { "title": "Clearview Physicians Center 1 (2 of 2)",
-        "filename": "./media/Clearview-PC-Bldg1-2.jpg",
+        "filename": "./media/portfolio/images/Clearview-PC-Bldg1-2.jpg",
         "description": `Adjacent to Piedmont Walton Hospital &bull; 
           Specialties include Oncology, Cardiology, Orthopedics, ENT, and Physical
           Therapy &bull; Pain and Spine Center &bull; Wound Healing Center &bull; 
           Surgical Specialists &bull; Metabolic Center`
       },
       { "title": "Clearview Physicians Center 2 (1 of 2)",
-        "filename": "./media/Clearview-PC-Bldg2-1.jpg",
+        "filename": "./media/portfolio/images/Clearview-PC-Bldg2-1.jpg",
         "description": `Roles: Business development, capital raising, capital partner 
           relationship management, early-on tenant leasing. Single-story 20,000 square 
           foot medical office building in Monroe, Georgia.`
       },
       { "title": "Clearview Physicians Center 2 (2 of 2)",
-        "filename": "./media/Clearview-PC-Bldg2-2.jpg",
+        "filename": "./media/portfolio/images/Clearview-PC-Bldg2-2.jpg",
         "description": `Located at the entrance to Piedmont Walton Hospital 
           campus &bull; Specialties include Dialysis and Urology &bull; Offers both 
           Urgent Care and Primary Care.`
       },
       { "title": "Clearview Physicians Center 2 (inside, 1 of 3)",
-        "filename": "./media/Clearview-PC-Inside-1.jpg",
+        "filename": "./media/portfolio/images/Clearview-PC-Inside-1.jpg",
         "description": `U.S. Renal Care serves patients with chronic and acute 
           renal disease.`
       },
       { "title": "Clearview Physicians Center 2 (inside, 2 of 3)",
-        "filename": "./media/Clearview-PC-Inside-2.jpg",
+        "filename": "./media/portfolio/images/Clearview-PC-Inside-2.jpg",
         "description": `(Under development)`
       },
       { "title": "Clearview Physicians Center 2 (inside, 3 of 3)",
-        "filename": "./media/Clearview-PC-Inside-3.jpg",
+        "filename": "./media/portfolio/images/Clearview-PC-Inside-3.jpg",
         "description": `(Under development)`
       }
     ]; // end json list of project images
@@ -170,3 +173,29 @@ function setupPortfolio() {
     }; // end for loop to add elements
   }; // end build
 }; // end function setupPortfolio
+
+function setupAbout() {
+  const colCardBodyTitle = `<div class="col-lg-6 col-sm-12 mx-auto">
+    <div data-aos="slide-right" data-aos-delay="300" class="card text-dark bg-light m-3">
+    <div class="card-body">
+    <h5 class="card-title">`;
+  const endTitleCardText = `</h5> <p class="card-text">`;
+  const endTextEndDivs = `</p> </div> </div> </div>`;
+
+  // Read bio information from external file and add to About page
+  $.getJSON(mediaPath + "about/about.json")
+    .done(function(data) {
+      $.each(data, function(index, value) {
+        $("#about-row").append(colCardBodyTitle + value.title + 
+          endTitleCardText + value.body + endTextEndDivs);
+      });    
+    })
+    .fail(function(jqxhr, textStatus, error) {
+      // Display error to console for debugging
+      console.log("Loading about.json failed: " + textStatus + ", " + error);
+
+      // Let user know that data could not be loaded
+      $("#about-row").append(colCardBodyTitle + "Error" + 
+        endTitleCardText + "Could not load Mr. Slattery's bio." + endTextEndDivs);
+    });
+};
