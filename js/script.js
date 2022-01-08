@@ -188,7 +188,8 @@ function setupAbout() {
       $.each(data, function(index, value) {
         $("#about-row").append(colCardBodyTitle + value.title + 
           endTitleCardText + value.body + endTextEndDivs);
-      });    
+      });   
+      console.log("Done: ", data.length); 
     })
     .fail(function(jqxhr, textStatus, error) {
       // Display error to console for debugging
