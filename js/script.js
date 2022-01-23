@@ -176,19 +176,34 @@ function setupPortfolio() {
 }; // end function setupPortfolio
 
 function setupAbout() {
+  const aboutMediaPath = mediaPath + "about/";
+
   const colCardBodyTitle = `<div class="col-lg-6 col-sm-12 mx-auto">
     <div data-aos="slide-right" data-aos-delay="300" class="card text-dark bg-light m-3">
     <div class="card-body">
     <h5 class="card-title">`;
-  const endTitleCardText = `</h5> <p class="card-text">`;
-  const endTextEndDivs = `</p> </div> </div> </div>`;
+  const endTitleCardText = `</h5> <div class="card-text">`;
+  const imgSrc = `<img src="`;
+  const imgAltText = `" alt="`;
+  const imgStyle = `" style="float: left; margin: 10px 20px 10px 0; max-width: 30%;">`;
+  const paraText = `<p>`;
+  const endTextEndDivs = `</p> </div> </div> </div> </div>`;
+  let cardText = ""; // Will be used to build card text based on object
 
   // Read bio information from external file and add to About page
-  $.getJSON(mediaPath + "about/about.json")
+  $.getJSON(aboutMediaPath + "about.json")
     .done(function(data) {
       $.each(data, function(index, value) {
+        // If image included, add it before paragraph text
+        if (value.hasOwnProperty("image")) {
+          cardText = imgSrc + value.image;
+          if (value.hasOwnProperty("alt-text")) cardText += imgAltText + value.alt-text;
+          cardText += imgStyle + paraText;
+        }
+        else cardText = paraText;
+
         $("#about-row").append(colCardBodyTitle + value.title + 
-          endTitleCardText + value.body + endTextEndDivs);
+          endTitleCardText + cardText + value.body + endTextEndDivs);
       });   
       console.log("Done: ", data.length); 
     })
