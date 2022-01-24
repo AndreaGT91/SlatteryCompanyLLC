@@ -1,7 +1,7 @@
 "use strict";
 
-// const mediaPath = window.location.protocol + "//" + window.location.hostname + "/media/";
 const mediaPath = "./media/";
+const JJSjrEmail = "JosephJohnSlatteryJr@SlatteryCompanyLLC.com";
 
 // On page load
 $(() => {
@@ -29,6 +29,7 @@ $(() => {
   else if (window.location.pathname.includes("contact")) {
     $("#contact-link").addClass("active");
     $("#contact-link").parent().attr("aria-current", "page");
+    $("#copy-button").click(() => navigator.clipboard.writeText(JJSjrEmail));
   }
   else {
     $("#home-link").addClass("active");
@@ -179,7 +180,7 @@ function setupAbout() {
   const aboutMediaPath = mediaPath + "about/";
   const aboutBioData = aboutMediaPath + "about.json";
 
-  const columnSlide = `<div class="col-lg-6 col-sm-12 mx-auto">
+  const columnSlide = `<div class="col-md-6 col-sm-12 mx-auto">
     <div data-aos="slide-right" data-aos-delay="`;
   const cardBodyTitle = `" class="card text-dark bg-light m-3">
     <div class="card-body"> <h5 class="card-title">`;
@@ -210,7 +211,7 @@ function setupAbout() {
 
         $("#about-row").append(columnSlide + slideDelay + cardBodyTitle +
           value.title + cardText + cardContent + value.body + endCard);
-          
+
         slideDelay += initialSlideDelay;
       });   
     })
