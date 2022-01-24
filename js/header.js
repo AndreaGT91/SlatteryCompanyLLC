@@ -8,7 +8,7 @@ class Header extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
       <header>
-        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" 
+        <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark" 
           aria-label="Slattery Company, LLC navigation">
           <div class="container-fluid">
             <!-- Brand name shows at all times -->

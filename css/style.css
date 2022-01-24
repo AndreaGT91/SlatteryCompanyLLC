@@ -40,8 +40,9 @@ img {
   border-radius: 25px;
 }
 
-@media (max-width: 992px) {
-  .offcanvas-collapse {
+/* Set media breakpoint for "small": 576px */
+@media (max-width: 576px) {
+  .offcanvas-collapse {    
     position: fixed;
     top: var(--nav-height);
     bottom: 0;

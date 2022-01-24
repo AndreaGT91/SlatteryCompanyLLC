@@ -177,35 +177,42 @@ function setupPortfolio() {
 
 function setupAbout() {
   const aboutMediaPath = mediaPath + "about/";
+  const aboutBioData = aboutMediaPath + "about.json";
 
-  const colCardBodyTitle = `<div class="col-lg-6 col-sm-12 mx-auto">
-    <div data-aos="slide-right" data-aos-delay="300" class="card text-dark bg-light m-3">
-    <div class="card-body">
-    <h5 class="card-title">`;
-  const endTitleCardText = `</h5> <div class="card-text">`;
+  const columnSlide = `<div class="col-lg-6 col-sm-12 mx-auto">
+    <div data-aos="slide-right" data-aos-delay="`;
+  const cardBodyTitle = `" class="card text-dark bg-light m-3">
+    <div class="card-body"> <h5 class="card-title">`;
+  const cardText = `</h5> <div class="card-text">`;
   const imgSrc = `<img src="`;
   const imgAltText = `" alt="`;
   const imgStyle = `" style="float: left; margin: 10px 20px 10px 0; max-width: 30%;">`;
   const paraText = `<p>`;
-  const endTextEndDivs = `</p> </div> </div> </div> </div>`;
-  let cardText = ""; // Will be used to build card text based on object
+  const endCard = `</p> </div> </div> </div> </div>`;
+
+  let cardContent = ""; // Will be used to build card text based on object
+  const initialSlideDelay = 300; // First slide delay 300ms
+  let slideDelay = initialSlideDelay; // Each card delays for 300ms longer
 
   // Read bio information from external file and add to About page
-  $.getJSON(aboutMediaPath + "about.json")
+  $.getJSON(aboutBioData)
     .done(function(data) {
       $.each(data, function(index, value) {
         // If image included, add it before paragraph text
         if (value.hasOwnProperty("image")) {
-          cardText = imgSrc + value.image;
-          if (value.hasOwnProperty("alt-text")) cardText += imgAltText + value.alt-text;
-          cardText += imgStyle + paraText;
+          cardContent = imgSrc + aboutMediaPath + value.image;
+          if (value.hasOwnProperty("altText")) {
+            cardContent += imgAltText + value.altText;
+          };
+          cardContent += imgStyle + paraText;
         }
-        else cardText = paraText;
+        else cardContent = paraText;
 
-        $("#about-row").append(colCardBodyTitle + value.title + 
-          endTitleCardText + cardText + value.body + endTextEndDivs);
+        $("#about-row").append(columnSlide + slideDelay + cardBodyTitle +
+          value.title + cardText + cardContent + value.body + endCard);
+          
+        slideDelay += initialSlideDelay;
       });   
-      console.log("Done: ", data.length); 
     })
     .fail(function(jqxhr, textStatus, error) {
       // Display error to console for debugging
