@@ -3,6 +3,9 @@
 const mediaPath = "./media/";
 const JJSjrEmail = "JosephJohnSlatteryJr@SlatteryCompanyLLC.com";
 
+// replace '\n' if found in JSON
+const replaceNewlines = value => value.replace(/\n/gi, "</p><p>");
+
 // On page load
 $(() => {
   // Set onclick handler to open/close side menu when hamburger clicked on mobile
@@ -203,14 +206,16 @@ function setupAbout() {
         if (value.hasOwnProperty("image")) {
           cardContent = imgSrc + aboutMediaPath + value.image;
           if (value.hasOwnProperty("altText")) {
-            cardContent += imgAltText + value.altText;
+            cardContent += imgAltText + replaceNewlines(value.altText);
           };
           cardContent += imgStyle + paraText;
         }
         else cardContent = paraText;
 
+        // Construct card to add; replace \n with </p><p> to display correctly
         $("#about-row").append(columnSlide + slideDelay + cardBodyTitle +
-          value.title + cardText + cardContent + value.body + endCard);
+          replaceNewlines(value.title) + cardText + cardContent + 
+          replaceNewlines(value.body) + endCard);
 
         slideDelay += initialSlideDelay;
       });   
