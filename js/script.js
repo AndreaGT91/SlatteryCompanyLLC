@@ -217,10 +217,10 @@ function setupAbout() {
     })
     .fail(function(jqxhr, textStatus, error) {
       // Display error to console for debugging
-      console.log("Loading about.json failed: " + textStatus + ", " + error);
+      console.log("Loading about.json failed: ", textStatus, error);
 
       // Let user know that data could not be loaded
-      $("#about-row").append(colCardBodyTitle + "Error" + 
-        endTitleCardText + "Could not load Mr. Slattery's bio." + endTextEndDivs);
+      $("#about-row").append(columnSlide + slideDelay + cardBodyTitle +
+        "Error" + cardText + paraText + "Could not load Mr. Slattery's bio." + endCard);
     });
 };
