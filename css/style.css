@@ -29,7 +29,7 @@ img {
   position: relative;
   top: 20px;
   max-width: 600px;
-  background: rgba(200, 200, 200, 0.5); /* For <form> only */
+  background: rgba(200, 200, 200, 0.8);
 }
 
 .carousel-caption {
