@@ -58,6 +58,7 @@ function onProjectClick(event) {
 
   const carouselIndicators = $("#carouselIndicators");
   const carouselInner = $("#carouselInner");
+  const projectDesc = $("#projectDesc");
   const projectDetail = $("#projectDetail");
 
   // Empty data from previous project
@@ -107,12 +108,12 @@ function onProjectClick(event) {
   }
 
   // Add div with details of project
-  let projectDesc = `<div class="text-center h5">
+  let newProjectDesc = `<div class="text-center h5">
     <p>${replaceFormatting(clickedProject.title)}</p></div>`;
 
   // If video for project, add between title and description
   if (clickedProject.hasOwnProperty("video")) {
-    projectDesc += `<div class="embed-responsive embed-responsive-16by9 text-center mb-2">
+    newProjectDesc += `<div class="embed-responsive embed-responsive-16by9 text-center mb-2">
         <video class="embed-responsive-item" allowfullscreen controls>
           <source src="${portfolioImagesPath + clickedProject.video}" 
             type="video/mp4">
@@ -120,15 +121,17 @@ function onProjectClick(event) {
       </div>`;
   };
 
-  projectDesc += `<div class="text-start">
+  newProjectDesc += `<div class="text-start">
     <p>${replaceFormatting(clickedProject.description)}</p></div>`;
 
-  let newProjectDesc = $(projectDesc);
-  newProjectDesc.appendTo(projectDetail);
+  let newProjectDescElement = $(newProjectDesc);
+  newProjectDescElement.appendTo(projectDetail);
 
   // Make the project description div visible
-  $("#projectDesc").removeClass("d-none");
-  $("#projectDesc").addClass("d-flex");
+  projectDesc.removeClass("d-none");
+  projectDesc.addClass("d-flex");
+  projectDesc.scrollIntoView({ behavior: "smooth" });
+  projectDesc.focus();
 }; // end function onProjectClick
 
 function setupPortfolio() {
