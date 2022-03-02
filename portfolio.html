@@ -28,8 +28,8 @@
   <!--Main Navigation-->
 
   <!--Main layout-->
-  <main class="container-fluid">
-    <div id="portfolioCarousel" class="carousel slide carousel-fade" 
+  <main class="container-fluid p-3 mx-auto">
+    <div id="projectCarousel" class="d-none carousel slide carousel-fade" 
       data-bs-ride="carousel">
       <div id="carouselIndicators" class="carousel-indicators">
         <!-- Indicator buttons added in script.js setupPortfolio -->
@@ -38,15 +38,25 @@
         <!-- Carousel items added in script.js setupPortfolio -->
       </div>
       <button class="carousel-control-prev carousel-controls" type="button"
-        data-bs-target="#portfolioCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
+        data-bs-target="#projectCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-label="Previous"></span>
       </button>
       <button class="carousel-control-next carousel-controls" type="button" 
-        data-bs-target="#portfolioCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
+        data-bs-target="#projectCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-label="Next"></span>
       </button>
+    </div>
+    <div id="projectDesc" 
+      class="row row-cols-1 mt-3 text-light d-none justify-content-center">
+      <div id="projectDetail">
+        <!-- Project description added in script.js setupPortfolio -->
+      </div>
+    </div>
+    <div class="row row-cols-auto mt-3 mx-auto text-light">
+      <h3 class="mx-auto">Projects</h3>
+    </div>
+    <div id="projectList" class="row row-cols-auto mx-auto text-light">
+      <!-- Project list added in script.js setupPortfolio -->
     </div>
   </main>
   <!--Main layout-->

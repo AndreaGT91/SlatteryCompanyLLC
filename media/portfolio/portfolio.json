@@ -1,50 +1,26 @@
 [
-  { "title": "Villas at River Park (1 of 2)",
-    "filename": "Johns-Creek-1.jpg",
-    "description": "(Under development)"
-  },
-  { "title": "Villas at River Park (2 of 2)",
-    "filename": "Johns-Creek-2.jpg",
-    "description": "(Under development)"
-  },
-  { "title": "St. Mary's Sacred Heart Hospital (1 of 2)",
-    "filename": "St-Marys-Sacred-Heart-North.jpg",
+  { "caption": "St. Mary's Sacred Heart Hospital",
+    "title": "St. Mary's Sacred Heart Hospital\n\nLavonia, Georgia",
+    "thumbnail": "St-Marys.jpg",
+    "images": [],
     "description": "Roles: Business development, grants and land acquisitions, capital raising, capital partner relationship management. Full-service general acute care hospital located in Lavonia, Georgia. Originally Ty Cobb Regional Medical Center, purchased in 2015 by St. Mary's Health Care System (Athens, Georgia)."
   },
-  { "title": "St. Mary's Sacred Heart Hospital (2 of 2)",
-    "filename": "St-Marys-Sacred-Heart-South.jpg",
-    "description": "155,000 square foot full-service hospital on a 39 acre campus in Lavonia, Georgia &bull; 24/7 Emergency Department, Critical Care unit, and 56 private inpatient rooms &bull; 4 surgical suites, mother/baby unit, and Imaging Services Department"
-  },
-  { "title": "St. Mary's Sacred Heart Wellness Center",
-    "filename": "Ty-Cobb-Physicians-Center.jpg",
+  { "caption": "Ty Cobb Physicians Center",
+    "title": "Ty Cobb Physicians Center\n\nLavonia, Georgia",
+    "thumbnail": "Ty-Cobb.jpg",
+    "images": [],
     "description": "Roles: Business development, grant acquisitions, capital raising, capital partner relationship management, tenant leasing and building management. Two-story, 35,000 square foot medical office building in Lavonia, Georgia. Originally Ty Cobb Physicians Center, now part of St. Mary's Sacred Heart Hospital campus."
   },
-  { "title": "Clearview Physicians Center 1 (1 of 2)",
-    "filename": "Clearview-PC-Bldg1-1.jpg",
+  { "caption": "Clearview Physicians Center",
+    "title": "Clearview Physicians Center\n\nMonroe, Georgia",
+    "thumbnail": "Clearview.jpg",
+    "images": [],
     "description": "Roles: Business development, capital raising, capital partner relationship management, tenant leasing and building management. Two-story, 38,000 square foot medical office building (MOB) in Monroe, Georgia. Part of the Piedmont Healthcare network (Atlanta, GA), the MOB is located at Piedmont Walton, originally named Clearview Regional Medical Center."
   },
-  { "title": "Clearview Physicians Center 1 (2 of 2)",
-    "filename": "Clearview-PC-Bldg1-2.jpg",
-    "description": "Adjacent to Piedmont Walton Hospital &bull; Specialties include Oncology, Cardiology, Orthopedics, ENT, and Physical Therapy &bull; Pain and Spine Center &bull; Wound Healing Center &bull; Surgical Specialists &bull; Metabolic Center"
-  },
-  { "title": "Clearview Physicians Center 2 (1 of 2)",
-    "filename": "Clearview-PC-Bldg2-1.jpg",
-    "description": "Roles: Business development, capital raising, capital partner relationship management, early-on tenant leasing. Single-story 20,000 square foot medical office building in Monroe, Georgia."
-  },
-  { "title": "Clearview Physicians Center 2 (2 of 2)",
-    "filename": "Clearview-PC-Bldg2-2.jpg",
-    "description": "Located at the entrance to Piedmont Walton Hospital campus &bull; Specialties include Dialysis and Urology &bull; Offers both Urgent Care and Primary Care."
-  },
-  { "title": "Clearview Physicians Center 2 (inside, 1 of 3)",
-    "filename": "Clearview-PC-Inside-1.jpg",
-    "description": "U.S. Renal Care serves patients with chronic and acute renal disease."
-  },
-  { "title": "Clearview Physicians Center 2 (inside, 2 of 3)",
-    "filename": "Clearview-PC-Inside-2.jpg",
-    "description": "(Under development)"
-  },
-  { "title": "Clearview Physicians Center 2 (inside, 3 of 3)",
-    "filename": "Clearview-PC-Inside-3.jpg",
+  { "caption": "Villas at River Park",
+    "title": "Villas at River Park\n\n(Parkway Baptist Church)\n\nJohns Creek, Georgia",
+    "thumbnail": "Villas-River-Park.jpg",
+    "images": ["Johns-Creek-1.jpg", "Johns-Creek-2.jpg"],
     "description": "(Under development)"
   }
 ]

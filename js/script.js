@@ -1,10 +1,19 @@
 "use strict";
 
 const mediaPath = "./media/";
+const portfolioMediaPath = mediaPath + "portfolio/";
+const aboutMediaPath = mediaPath + "about/";
+
+const projectPrefix = "project-";
+const imagePrefix = "image-";
+
 const JJSjrEmail = "JosephJohnSlatteryJr@SlatteryCompanyLLC.com";
 
-// replace '\n' if found in JSON
+// replace "\n" if found in JSON
 const replaceNewlines = value => value.replace(/\n/gi, "</p><p>");
+
+// Portfolio list needs to be global for access in onClick
+let portfolioList = [];
 
 // On page load
 $(() => {
@@ -14,11 +23,12 @@ $(() => {
   });
 
   // Initialize Animate on Scroll library 
-  AOS.init({duration: 1500}); 
+  AOS.init({ duration: 1500 });
 
   // Make appropriate navbar link active
   $(".nav-item").attr("aria-current", false);
   $(".nav-link").find(".active").removeClass("active");
+
   if (window.location.pathname.includes("portfolio")) {
     $("#portfolio-link").addClass("active");
     $("#portfolio-link").parent().attr("aria-current", "page");
@@ -38,95 +48,127 @@ $(() => {
     $("#home-link").addClass("active");
     $("#home-link").parent().attr("aria-current", "page");
   };
-});
+}); // end of page load function
 
-function setupPortfolio() {
-  const portfolioMediaPath = mediaPath + "portfolio/";
-  const portfolioDataPath = portfolioMediaPath + "portfolio.json";
+function onProjectClick(event) {
+  event.preventDefault();
+
   const portfolioImagesPath = portfolioMediaPath + "images/";
 
   const carouselIndicators = $("#carouselIndicators");
   const carouselInner = $("#carouselInner");
-  let numItems = $(".carousel-item").length;
+  const projectDetail = $("#projectDetail");
+
+  // Empty data from previous project
+  carouselIndicators.empty();
+  carouselInner.empty();
+  projectDetail.empty();
+
+  // Extract which project was clicked from event
+  let clickedProject = portfolioList[parseInt(event.target.parentElement.id.slice(projectPrefix.length))]
+
+  // If there images, create the carousel
+  if (clickedProject.images.length > 0) {
+    let newIndicator;
+    let newInner;
+
+    for (let i=0; i<clickedProject.images.length; i++) {
+      newIndicator = $(`<button type="button" 
+          data-bs-target="#projectCarousel" 
+          data-bs-slide-to="${i}" 
+          aria-label="${clickedProject.caption}">
+        </button>`);
+      newInner = $(`<div class="carousel-item"> 
+          <img class="mx-auto d-block" id="${imagePrefix}${i}" 
+            src="${portfolioImagesPath + clickedProject.images[i]}" 
+            alt="Image ${i} of ${clickedProject.caption}"> 
+        </div>`);
+
+      // Add active classes to first elements
+      if (i == 0) {
+        newIndicator.addClass("active");
+        newIndicator.attr("aria-current", "true");
+        newInner.addClass("active");
+      };
+
+      newIndicator.appendTo(carouselIndicators);
+      newInner.appendTo(carouselInner);
+    };
+
+    // Make carousel visible
+    $("#projectCarousel").removeClass("d-none");
+    $("#projectCarousel").addClass("d-flex");
+  };
+
+  // Add div with details of project
+  let projectDesc = $(`<div class="text-center h5">
+    <p>${replaceNewlines(clickedProject.title)}</p></div>
+    <div class="text-start">
+    <p>${replaceNewlines(clickedProject.description)}</p></div>`);
+  projectDesc.appendTo(projectDetail);
+
+  // Make the project description div visible
+  $("#projectDesc").removeClass("d-none");
+  $("#projectDesc").addClass("d-flex");
+}; // end function onProjectClick
+
+function setupPortfolio() {
+  const portfolioDataPath = portfolioMediaPath + "portfolio.json";
+  const portfolioThumbsPath = portfolioMediaPath + "thumbnails/";
+
+  const projectList = $("#projectList");
+
+  // On page load, empty global portfolioi list and displayed project list; 
+  // hide carousel and project description
+  portfolioList = [];
+  projectList.empty();
+  $("#projectCarousel, #projectDesc").removeClass("d-flex");
+  $("#projectCarousel, #projectDesc").addClass("d-none");
 
   // Read portfolio information from external file and add to Portfolio page
   $.getJSON(portfolioDataPath)
-    .done(function(projects) {
-      // Check to see if number of projects changed since page last loaded
-      // If so, empty old data, prepare to load new
-      if ((numItems > 0) && (numItems != projects.length)) {
-        carouselIndicators.empty();
-        carouselInner.empty();
-        numItems = 0;
-      };
+    .done(function (projects) {
+      // Only build page if there are projects
+      if (projects.length > 0) {
+        let newProject;
 
-      // Only build page if it's empty and there are projects
-      if ((numItems == 0) && (projects.length > 0)) {
-        // In case of previous failure to read JSON, need to make sure
-        // controls are now showing
-        $(".carousel-controls").show();
+        $.each(projects, function (index, project) {
+          newProject = $(`<div class="col mx-auto">
+            <figure class="figure mt-2" id="${projectPrefix}${index}">
+              <img src="${portfolioThumbsPath + project.thumbnail}"
+                class="figure-img img-fluid rounded" 
+                alt="Thumbnail for ${project.caption} project">
+              <figcaption class="figure-caption text-center text-light">
+                ${project.caption}
+              </figcaption>
+            </figure>
+          </div>`);
 
-        let newIndicator;
-        let newInner;
-        // let captionHeight;
-        // let imageHeight;
-        // let indicatorPosition;
-
-        $.each(projects, function(index, project) {
-          newIndicator = $(`<button type='button' 
-              data-bs-target='#portfolioCarousel' 
-              data-bs-slide-to='${index}' 
-              aria-label='${project.title}'>
-            </button>`);
-            // <div class='carousel-caption d-block bg-dark' id='caption-${i}'> 
-          newInner = $(`<div class='carousel-item'> 
-              <img class='mx-auto d-block' id='img-${index}' 
-                src='${portfolioImagesPath + project.filename}' 
-                alt='${project.title}'> 
-              <div class='carousel-caption d-block' id='caption-${index}'> 
-                <h5>${project.title}</h5> 
-                <p>${project.description}</p> 
-              </div>
-            </div>`);
-
-          // Add active classes to first elements
+          // Add active class to first project
           if (index == 0) {
-            newIndicator.addClass("active");
-            newIndicator.attr("aria-current", "true");
-            newInner.addClass("active");
+            newProject.addClass("active");
+            newProject.attr("aria-current", "true");
           };
 
-          newIndicator.appendTo(carouselIndicators);
-          newInner.appendTo(carouselInner);
-        });   
+          newProject.appendTo(projectList);
+          portfolioList.push(project);
+        });
+
+        // Add click event handler to all the projects
+        $("figure").click(onProjectClick);
       };
     })
-    .fail(function(jqxhr, textStatus, error) {
+    .fail(function (jqxhr, textStatus, error) {
       // Display error to console for debugging
       console.log("Loading portfolio.json failed: ", textStatus, error);
 
       // Let user know that data could not be loaded
-      carouselInner.append(`div class="row d-flex flex-row justify-content-center">
-        <div class="col-4 mx-auto"><div class="card text-dark bg-light m-3">
-        <div class="card-body"><h5 class="card-title">Error</h5>
-        <p>Could not load Portfolio.</p></div></div></div></div>`);
-      $(".carousel-controls").hide();
+      projectList.append(`<div class="col mx-auto">
+        Error: Could not load Portfolio.</div>`);
     });
-
-
-      // captionHeight = $(`#caption-${i}`).height();
-      // imageHeight = window.innerHeight - captionHeight - 56;
-      // $(`#img-${i}`).height(imageHeight);
-      // $(`#img-${i}`).css("max-height", `${imageHeight}px`);
-
-      // indicatorPosition = imageHeight - carouselIndicators.height();
-      // carouselIndicators.css("top", `${indicatorPosition}px`);
-      // carouselIndicators[0].style.bottom = `${captionHeight}px`;
-      // carouselIndicators.css("bottom",`${indicatorPosition}px`);
 }; // end function setupPortfolio
 
 function setupAbout() {
-  const aboutMediaPath = mediaPath + "about/";
   const aboutBioData = aboutMediaPath + "about.json";
 
   const columnSlide = `<div class="col-md-6 col-sm-12 mx-auto">
@@ -146,8 +188,8 @@ function setupAbout() {
 
   // Read bio information from external file and add to About page
   $.getJSON(aboutBioData)
-    .done(function(bioInfo) {
-      $.each(bioInfo, function(index, bioItem) {
+    .done(function (bioInfo) {
+      $.each(bioInfo, function (index, bioItem) {
         // If image included, add it before paragraph text
         if (bioItem.hasOwnProperty("image")) {
           cardContent = imgSrc + aboutMediaPath + bioItem.image;
@@ -160,13 +202,13 @@ function setupAbout() {
 
         // Construct card to add; replace \n with </p><p> to display correctly
         $("#about-row").append(columnSlide + slideDelay + cardBodyTitle +
-          replaceNewlines(bioItem.title) + cardText + cardContent + 
+          replaceNewlines(bioItem.title) + cardText + cardContent +
           replaceNewlines(bioItem.body) + endCard);
 
         slideDelay += initialSlideDelay;
-      });   
+      });
     })
-    .fail(function(jqxhr, textStatus, error) {
+    .fail(function (jqxhr, textStatus, error) {
       // Display error to console for debugging
       console.log("Loading about.json failed: ", textStatus, error);
 
@@ -174,4 +216,4 @@ function setupAbout() {
       $("#about-row").append(columnSlide + slideDelay + cardBodyTitle +
         "Error" + cardText + paraText + "Could not load Mr. Slattery's bio." + endCard);
     });
-};
+}; // end funciton setupAbout
