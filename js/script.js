@@ -9,8 +9,9 @@ const imagePrefix = "image-";
 
 const JJSjrEmail = "JosephJohnSlatteryJr@SlatteryCompanyLLC.com";
 
-// replace "\n" if found in JSON
-const replaceNewlines = value => value.replace(/\n/gi, "</p><p>");
+// replace "\n" or "\t" if found in JSON
+const replaceFormatting = value =>
+value.replace(/\n/gi, "</p><p>").replace(/\t/gi, " &nbsp&nbsp&nbsp&nbsp ");
 
 // Portfolio list needs to be global for access in onClick
 let portfolioList = [];
@@ -98,13 +99,18 @@ function onProjectClick(event) {
     // Make carousel visible
     $("#projectCarousel").removeClass("d-none");
     $("#projectCarousel").addClass("d-flex");
-  };
+  }
+  else {
+    // Hide carousel if there are no pictures
+    $("#projectCarousel").removeClass("d-flex");
+    $("#projectCarousel").addClass("d-none");
+  }
 
   // Add div with details of project
   let projectDesc = $(`<div class="text-center h5">
-    <p>${replaceNewlines(clickedProject.title)}</p></div>
+    <p>${replaceFormatting(clickedProject.title)}</p></div>
     <div class="text-start">
-    <p>${replaceNewlines(clickedProject.description)}</p></div>`);
+    <p>${replaceFormatting(clickedProject.description)}</p></div>`);
   projectDesc.appendTo(projectDetail);
 
   // Make the project description div visible
@@ -194,7 +200,7 @@ function setupAbout() {
         if (bioItem.hasOwnProperty("image")) {
           cardContent = imgSrc + aboutMediaPath + bioItem.image;
           if (bioItem.hasOwnProperty("altText")) {
-            cardContent += imgAltText + replaceNewlines(bioItem.altText);
+            cardContent += imgAltText + replaceFormatting(bioItem.altText);
           };
           cardContent += imgStyle + paraText;
         }
@@ -202,8 +208,8 @@ function setupAbout() {
 
         // Construct card to add; replace \n with </p><p> to display correctly
         $("#about-row").append(columnSlide + slideDelay + cardBodyTitle +
-          replaceNewlines(bioItem.title) + cardText + cardContent +
-          replaceNewlines(bioItem.body) + endCard);
+          replaceFormatting(bioItem.title) + cardText + cardContent +
+          replaceFormatting(bioItem.body) + endCard);
 
         slideDelay += initialSlideDelay;
       });
