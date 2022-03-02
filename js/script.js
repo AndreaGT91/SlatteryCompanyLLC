@@ -71,30 +71,40 @@ function onProjectClick(event) {
 
   // If there images, create the carousel
   if (clickedProject.images.length > 0) {
-    let newIndicator;
+    let multiplePics = clickedProject.images.length > 1;
     let newInner;
+    let newIndicator;
 
     for (let i=0; i<clickedProject.images.length; i++) {
-      newIndicator = $(`<button type="button" 
-          data-bs-target="#projectCarousel" 
-          data-bs-slide-to="${i}" 
-          aria-label="${clickedProject.caption}">
-        </button>`);
       newInner = $(`<div class="carousel-item"> 
           <img class="mx-auto d-block" id="${imagePrefix}${i}" 
             src="${portfolioImagesPath + clickedProject.images[i]}" 
             alt="Image ${i} of ${clickedProject.caption}"> 
         </div>`);
+      if (multiplePics) newIndicator = $(`<button type="button" 
+          data-bs-target="#projectCarousel" 
+          data-bs-slide-to="${i}" 
+          aria-label="${clickedProject.caption}">
+        </button>`);
 
       // Add active classes to first elements
       if (i == 0) {
-        newIndicator.addClass("active");
-        newIndicator.attr("aria-current", "true");
         newInner.addClass("active");
+
+        if (multiplePics) {
+          newIndicator.addClass("active");
+          newIndicator.attr("aria-current", "true");
+        }
       };
 
-      newIndicator.appendTo(carouselIndicators);
       newInner.appendTo(carouselInner);
+
+      // If only one picture, hide Next/Prev buttons; unhide for multiple
+      if (multiplePics) {
+        newIndicator.appendTo(carouselIndicators);
+        $(".carousel-controls").show();
+      }
+      else $(".carousel-controls").hide();
     };
 
     // Make carousel visible
