@@ -5,7 +5,7 @@
     "images": ["St-Marys-Sacred-Heart-North.jpg", "St-Marys-Sacred-Heart-South.jpg"],
     "description": "\u2022\t155,000 square foot, general acute care hospital on a 39-acre campus. The patients of the full-service hospital benefit from its 24/7 Emergency Department, Critical Care unit, 56 private inpatient rooms, 4 surgical suites, mother/baby unit, and a full Imaging Services Department.\n\u2022\tOriginal Ownership: 80+ Northeast Georgia physicians and partners Joseph Slattery and Larry Unger.\n\u2022\tCurrent Ownership: St. Mary's Health Care System (Athens, Georgia).\n\u2022\tMr. Slattery Roles: Business development; 2 land acquisitions; Federal, State, County and community grants; capital raising; and capital partner relationship management."
   },
-  { "caption": "Medical Campus District: Lavonia, GA",
+  { "caption": "Lavonia Medical Campus District",
     "title": "Medical Campus District\nClear Creek Investors, LLC\nLavonia, Georgia",
     "thumbnail": "MCD-Lavonia.jpg",
     "images": ["MCD-Lavonia-Aerial.jpg"],
@@ -35,5 +35,17 @@
     "thumbnail": "Home-Depot.jpg",
     "images": ["Home-Depot-HQ.jpg"],
     "description": "\u2022\tBuildings 2 & 3\n\u2022\tCorporate data center\n\u2022\tMultiple large scale parking structures\n\u2022\tCampus vehicle traffic enhancements"
+  },
+  { "caption": "Federal Reserve Bank of Atlanta",
+    "title": "Federal Reserve Bank\n6th District Headquarters\nAtlanta, Georgia",
+    "thumbnail": "Federal-Reserve-Bank.jpg",
+    "images": ["Federal-Reserve-Bank-of-Atlanta.jpg"],
+    "description": "\u2022\t11-story Headquarters and Operations Center\n\u2022\t750,000 square feet\n\u2022\t4-Level, 500 car parking structure\n\u2022\tWorld's largest cash vault"
+  },
+  { "caption": "State Farm Arena",
+    "title": "State Farm Arena\n(formerly Philips Arena)\nAtlanta, Georgia",
+    "thumbnail": "State-Farm-Arena.jpg",
+    "images": ["State-Farm-Arena-Atlanta.jpg"],
+    "description": "\u2022\tOriginal building seating capacity and configuration\n\u2022\tIncluded adjacent parking structures, elevated vehicle surface lanes, and perimeter road enhancements\n\u2022\tConcerts and Entertainment Events seating capacity: 21,000\n\u2022\tBasketball seating capacity: 19,050\n\u2022\tOptional Athletic Configuration seating capacity: 17,624\n\u2022\tLuxury Suites: 92\n\u2022\tParty Suites: 9\n\u2022\tClub Level Seats: 1,866"
   }
 ]
