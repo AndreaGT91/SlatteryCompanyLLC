@@ -47,5 +47,23 @@
     "thumbnail": "State-Farm-Arena.jpg",
     "images": ["State-Farm-Arena-Atlanta.jpg"],
     "description": "\u2022\tOriginal building seating capacity and configuration\n\u2022\tIncluded adjacent parking structures, elevated vehicle surface lanes, and perimeter road enhancements\n\u2022\tConcerts and Entertainment Events seating capacity: 21,000\n\u2022\tBasketball seating capacity: 19,050\n\u2022\tOptional Athletic Configuration seating capacity: 17,624\n\u2022\tLuxury Suites: 92\n\u2022\tParty Suites: 9\n\u2022\tClub Level Seats: 1,866"
+  },
+  { "caption": "Coca-Cola World Headquarters",
+    "title": "Coca-Cola World Headquarters Expansion\nAtlanta, Georgia",
+    "thumbnail": "Coca-Cola-HQ.jpg",
+    "images": ["Coca-Cola-HQ-Atlanta.jpg"],
+    "description": "\u2022\t20-story corporate office building\n\u2022\tCampus Central Reception building\n\u2022\t2 parking garages"
+  },
+  { "caption": "Overlook II",
+    "title": "Overlook II Commercial Office Building\nCrow-Terwilliger\nSmyrna, Georgia",
+    "thumbnail": "Overlook-II.jpg",
+    "images": ["Overlook-II-Smyrna.jpg"],
+    "description": "\u2022\t12-story, 255,000 square foot commercial office building\n\u2022\tParking garage\n\u2022\tAthletic center\n\u2022\tConference center\n\u2022\tCafe"
+  },
+  { "caption": "Overlook III",
+    "title": "Overlook III Commercial Office Building\nCrow-Terwilliger\nSmyrna, Georgia",
+    "thumbnail": "Overlook-III.jpg",
+    "images": ["Overlook-III-Smyrna.jpg"],
+    "description": "\u2022\t22-story, 432,000 square foot commercial office building\n\u2022\tParking garage\n\u2022\tFull-service dining club\n\u2022\tFull-service athletic center\n\u2022\tConference center"
   }
 ]
