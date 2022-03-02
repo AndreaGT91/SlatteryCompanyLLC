@@ -11,7 +11,7 @@ const JJSjrEmail = "JosephJohnSlatteryJr@SlatteryCompanyLLC.com";
 
 // replace "\n" or "\t" if found in JSON
 const replaceFormatting = value =>
-value.replace(/\n/gi, "</p><p>").replace(/\t/gi, " &nbsp&nbsp&nbsp&nbsp ");
+  value.replace(/\n/gi, "</p><p>").replace(/\t/gi, " &nbsp&nbsp&nbsp&nbsp ");
 
 // Portfolio list needs to be global for access in onClick
 let portfolioList = [];
