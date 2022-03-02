@@ -107,11 +107,24 @@ function onProjectClick(event) {
   }
 
   // Add div with details of project
-  let projectDesc = $(`<div class="text-center h5">
-    <p>${replaceFormatting(clickedProject.title)}</p></div>
-    <div class="text-start">
-    <p>${replaceFormatting(clickedProject.description)}</p></div>`);
-  projectDesc.appendTo(projectDetail);
+  let projectDesc = `<div class="text-center h5">
+    <p>${replaceFormatting(clickedProject.title)}</p></div>`;
+
+  // If video for project, add between title and description
+  if (clickedProject.hasOwnProperty("video")) {
+    projectDesc += `<div class="embed-responsive embed-responsive-16by9 text-center mb-2">
+        <video class="embed-responsive-item" allowfullscreen controls>
+          <source src="${portfolioImagesPath + clickedProject.video}" 
+            type="video/mp4">
+        </video>
+      </div>`;
+  };
+
+  projectDesc += `<div class="text-start">
+    <p>${replaceFormatting(clickedProject.description)}</p></div>`;
+
+  let newProjectDesc = $(projectDesc);
+  newProjectDesc.appendTo(projectDetail);
 
   // Make the project description div visible
   $("#projectDesc").removeClass("d-none");

@@ -25,6 +25,11 @@ img {
   max-height: 100%;
 }
 
+video {
+  max-width: 50%; 
+  height: auto;
+}
+
 .carousel {
   max-width: 100vmax; 
   max-height: 80vmin;
