@@ -65,5 +65,11 @@
     "thumbnail": "Overlook-III.jpg",
     "images": ["Overlook-III-Smyrna.jpg"],
     "description": "\u2022\t22-story, 432,000 square foot commercial office building\n\u2022\tParking garage\n\u2022\tFull-service dining club\n\u2022\tFull-service athletic center\n\u2022\tConference center"
+  },
+  { "caption": "Bank of America",
+    "title": "Bank of America\nCharlotte, North Carolina",
+    "thumbnail": "Bank-of-America.jpg",
+    "images": ["Bank-of-America-Charlotte.jpg"],
+    "description": "\u2022\t30-story, 700,000 square foot building\n\u2022\t10-Level, 400,000 square foot parking structure"
   }
 ]
