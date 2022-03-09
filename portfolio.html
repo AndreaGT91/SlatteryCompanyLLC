@@ -28,35 +28,57 @@
   <!--Main Navigation-->
 
   <!--Main layout-->
-  <main class="container-fluid p-3 mx-auto">
-    <div class="row row-cols-auto mt-3 mx-auto text-light">
-      <h3 class="mx-auto">Projects</h3>
-    </div>
-    <div id="projectList" class="row row-cols-auto mx-auto text-light">
-      <!-- Project list added in script.js setupPortfolio -->
-    </div>
-    <div id="projectDesc" 
-      class="row row-cols-1 my-3 text-light d-none justify-content-center">
-      <div id="projectDetail">
-        <!-- Project description added in script.js setupPortfolio -->
+  <main class="container-fluid">
+    <!-- ***** PORTFOLIO DISPLAYS THUMBNAILS OF ALL PROJECTS ***** -->
+    <!-- Portfolio section disappears once project selected -->
+    <div id="portfolio" class="row d-flex flex-row text-center text-light">
+      <h3 class="mt-4">Projects</h3>
+      <div id="projectList" class="row row-cols-auto">
+        <!-- Project list added in script.js setupPortfolio -->
       </div>
     </div>
-    <div id="projectCarousel" class="d-none carousel slide carousel-fade" 
-      data-bs-ride="carousel">
-      <div id="carouselIndicators" class="carousel-indicators">
-        <!-- Indicator buttons added in script.js setupPortfolio -->
+
+    <!-- ***** PROJECT INFO DISPLAYS DETAIL OF A SINGLE PROJECT ***** -->
+    <!-- Individual project information hidden until project selected -->
+    <div id="projectInfo" class="row d-none flex-row text-center text-light">
+      <!-- Section 1: Project Title -->
+      <div id="projectTitle" class="h5 my-3">
+        <!-- Title text set in script.js onProjectClick -->
       </div>
-      <div id="carouselInner" class="carousel-inner">
-        <!-- Carousel items added in script.js setupPortfolio -->
+      <!-- Section 2: Video, if included -->
+      <div id="projectVideoDiv" 
+        class="embed-responsive embed-responsive-16by9 my-3 justify-content-center">
+        <video id="projectVideo" class="embed-responsive-item" 
+          allowfullscreen controls>
+          <!-- <source> set in script.js onProjectClick -->
+        </video>
       </div>
-      <button class="carousel-control-prev carousel-controls" type="button"
-        data-bs-target="#projectCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-label="Previous"></span>
-      </button>
-      <button class="carousel-control-next carousel-controls" type="button" 
-        data-bs-target="#projectCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-label="Next"></span>
-      </button>
+      <!-- Section 3: Carousel of images, if provided -->
+      <div id="projectCarousel" class="carousel slide carousel-fade" 
+        data-bs-ride="carousel">
+        <div id="carouselIndicators" class="carousel-indicators">
+          <!-- Indicator buttons added in script.js onProjectClick -->
+        </div>
+        <div id="carouselInner" class="carousel-inner">
+          <!-- Carousel items added in script.js onProjectClick -->
+        </div>
+        <button class="carousel-control-prev carousel-controls" type="button"
+          data-bs-target="#projectCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-label="Previous"></span>
+        </button>
+        <button class="carousel-control-next carousel-controls" type="button" 
+          data-bs-target="#projectCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-label="Next"></span>
+        </button>
+      </div>
+      <!-- Section 4: Project Details -->
+      <div id="projectDesc" 
+        class="row row-cols-1 my-3 text-light justify-content-center">
+        <h5>Details:</h5>
+        <div id="projectDetail" class="text-start">
+          <!-- Project description added in script.js onProjectClick -->
+        </div>
+      </div>
     </div>
   </main>
   <!--Main layout-->

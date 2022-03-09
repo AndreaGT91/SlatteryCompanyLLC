@@ -58,8 +58,13 @@ function onProjectClick(event) {
 
   const carouselIndicators = $("#carouselIndicators");
   const carouselInner = $("#carouselInner");
-  const projectDesc = $("#projectDesc");
   const projectDetail = $("#projectDetail");
+
+  // Hide Portfolio, show individual project detail
+  $("#portfolio").removeClass("d-flex");
+  $("#portfolio").addClass("d-none");
+  $("#projectInfo").removeClass("d-none");
+  $("#projectInfo").addClass("d-flex");
 
   // Empty data from previous project
   carouselIndicators.empty();
@@ -69,88 +74,92 @@ function onProjectClick(event) {
   // Extract which project was clicked from event
   let clickedProject = portfolioList[parseInt(event.target.parentElement.id.slice(projectPrefix.length))]
 
-  // Add div with details of project
-  let newProjectDesc = `<div class="text-center h5">
-    <p>${replaceFormatting(clickedProject.title)}</p></div>`;
+  // Update project title
+  if (clickedProject.hasOwnProperty("title"))
+    $("#projectTitle").append(`<p>${replaceFormatting(clickedProject.title)}</p>`)
+  else 
+    $("#projectTitle").append("<p>Project</p>");
 
-  // If video for project, add between title and description
+  // If video for project, add after title; else hide
   if (clickedProject.hasOwnProperty("video")) {
-    newProjectDesc += `<div class="embed-responsive embed-responsive-16by9 text-center mb-2">
-        <video class="embed-responsive-item" allowfullscreen controls>
-          <source src="${portfolioImagesPath + clickedProject.video}" 
-            type="video/mp4">
-        </video>
-      </div>`;
+    $("#projectVideoDiv").removeClass("d-none");
+    $("#projectVideoDiv").addClass("d-flex");
+    $("#projectVideoDiv").append(`<source 
+      src="${portfolioImagesPath + clickedProject.video}" type="video/mp4">`);
+  }
+  else {
+    $("source").remove();
+    $("#projectVideoDiv").removeClass("d-flex");
+    $("#projectVideoDiv").addClass("d-none");
   };
 
-  // Add rest of project detail
-  newProjectDesc += `<div class="text-start">
-    <p>${replaceFormatting(clickedProject.description)}</p></div>`;
-
-  // Create element and insert into DOM
-  let newProjectDescElement = $(newProjectDesc);
-  newProjectDescElement.appendTo(projectDetail);
-
-  // Make the project description div visible
-  projectDesc.removeClass("d-none");
-  projectDesc.addClass("d-flex");
-
-  // If there images, create the carousel
-  if (clickedProject.images.length > 0) {
-    let projectCarousel = $("#projectCarousel");
+  // If there are images, create the carousel
+  if ((clickedProject.hasOwnProperty("images")) &&
+      (clickedProject.images.length > 0)) {
     let multiplePics = clickedProject.images.length > 1;
     let newInner;
     let newIndicator;
+    let altText;
+
+    if (clickedProject.hasOwnProperty("caption")) 
+      altText = clickedProject.caption
+    else altText = "Project image";
 
     for (let i=0; i<clickedProject.images.length; i++) {
+      // Create new carousel item and append
       newInner = $(`<div class="carousel-item"> 
           <img class="mx-auto d-block" id="${imagePrefix}${i}" 
             src="${portfolioImagesPath + clickedProject.images[i]}" 
-            alt="Image ${i} of ${clickedProject.caption}"> 
+            alt="Image ${i} of ${altText}"> 
         </div>`);
-      if (multiplePics) newIndicator = $(`<button type="button" 
-          data-bs-target="#projectCarousel" 
-          data-bs-slide-to="${i}" 
-          aria-label="${clickedProject.caption}">
-        </button>`);
+      newInner.appendTo(carouselInner);
+
+      // If more than one picture, create new indicator and append
+      if (multiplePics) {
+        newIndicator = $(`<button type="button" 
+            data-bs-target="#projectCarousel" 
+            data-bs-slide-to="${i}" 
+            aria-label="${altText}">
+          </button>`);
+        newIndicator.appendTo(carouselIndicators);
+      };
 
       // Add active classes to first elements
       if (i == 0) {
         newInner.addClass("active");
+        newInner.attr("aria-current", "true");
 
         if (multiplePics) {
           newIndicator.addClass("active");
           newIndicator.attr("aria-current", "true");
-        }
+        };
       };
-
-      newInner.appendTo(carouselInner);
-
-      // If only one picture, hide Next/Prev buttons; unhide for multiple
-      if (multiplePics) {
-        newIndicator.appendTo(carouselIndicators);
-        $(".carousel-controls").show();
-      }
-      else $(".carousel-controls").hide();
     };
 
-    // Make carousel visible
-    projectCarousel.removeClass("d-none");
-    projectCarousel.addClass("d-flex");
+    // If only one picture, hide Next/Prev buttons; unhide for multiple
+    if (multiplePics) $(".carousel-controls").show()
+    else $(".carousel-controls").hide();
 
-    // Scroll to carousel and give it focus
-    projectCarousel[0].scrollIntoView({ behavior: "smooth" });
-    projectCarousel.focus();
+    // Make carousel visible
+    $("#projectCarousel").removeClass("d-none");
+    $("#projectCarousel").addClass("d-flex");
   }
   else {
     // Hide carousel if there are no pictures
     $("#projectCarousel").removeClass("d-flex");
     $("#projectCarousel").addClass("d-none");
+  };
 
-    // Scroll to project description and give it focus
-    projectDesc[0].scrollIntoView({ behavior: "smooth" });
-    projectDesc.focus();
+  // Add project details, if given
+  if (clickedProject.hasOwnProperty("description")) {
+    $("#projectDesc").removeClass("d-none");
+    $("#projectDesc").addClass("d-flex");
+    projectDetail.append(`<p>${replaceFormatting(clickedProject.description)}</p>`);
   }
+  else {
+    $("#projectDesc").removeClass("d-flex");
+    $("#projectDesc").addClass("d-none");
+  };
 }; // end function onProjectClick
 
 function setupPortfolio() {
@@ -159,12 +168,12 @@ function setupPortfolio() {
 
   const projectList = $("#projectList");
 
-  // On page load, empty global portfolioi list and displayed project list; 
-  // hide carousel and project description
+  // On page load, empty global portfolio list and displayed project list; 
+  // Hide detailed project information
   portfolioList = [];
   projectList.empty();
-  $("#projectCarousel, #projectDesc").removeClass("d-flex");
-  $("#projectCarousel, #projectDesc").addClass("d-none");
+  $("#projectInfo").removeClass("d-flex");
+  $("#projectInfo").addClass("d-none");
 
   // Read portfolio information from external file and add to Portfolio page
   $.getJSON(portfolioDataPath)
