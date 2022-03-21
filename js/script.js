@@ -30,6 +30,8 @@ $(() => {
   $(".nav-item").attr("aria-current", false);
   $(".nav-link").find(".active").removeClass("active");
 
+  console.log("Path: ", window.location.pathname);
+
   if (window.location.pathname.includes("portfolio")) {
     $("#portfolio-link").addClass("active");
     $("#portfolio-link").parent().attr("aria-current", "page");

@@ -71,5 +71,11 @@
     "thumbnail": "Bank-of-America.jpg",
     "images": ["Bank-of-America-Charlotte.jpg"],
     "description": "\u2022\t30-story, 700,000 square foot building\n\u2022\t10-Level, 400,000 square foot parking structure"
+  },
+  { "caption": "CNN Center",
+    "title": "CNN Center / Turner Broadcasting Headquarters\nAtlanta, Georgia",
+    "thumbnail": "CNN-Center.jpg",
+    "images": ["CNN-Center-Turner.jpg"],
+    "description": "Built-out office components"
   }
 ]
