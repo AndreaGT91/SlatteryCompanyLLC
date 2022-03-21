@@ -1,4 +1,4 @@
-// header-component is the nav bar to be used on every page of the Slatter Company site
+// header-component is the nav bar to be used on every page of the Slatter Corporation site
 
 class Header extends HTMLElement {
   constructor() {
@@ -9,10 +9,10 @@ class Header extends HTMLElement {
     this.innerHTML = `
       <header>
         <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark" 
-          aria-label="Slattery Company, LLC navigation" role="navigation">
+          aria-label="Slattery Corporation navigation" role="navigation">
           <div class="container-fluid">
             <!-- Brand name shows at all times -->
-            <a class="navbar-brand" href="#">Slattery Company, LLC</a>
+            <a class="navbar-brand" href="#">Slattery Corporation</a>
     
             <!-- Hamburger menu only shows on small screens -->
             <button

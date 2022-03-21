@@ -1,4 +1,4 @@
-// footer-component is the footer to be used on every page of the Slatter Company site
+// footer-component is the footer to be used on every page of the Slatter Corporation site
 
 class Footer extends HTMLElement {
   constructor() {
