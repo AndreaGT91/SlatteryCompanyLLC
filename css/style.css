@@ -47,7 +47,7 @@ p {
 }
 
 /* Set media breakpoint for "small": 576px */
-@media (max-width: 576px) {
+@media (max-width: 575.98px) {
   .offcanvas-collapse {    
     position: fixed;
     top: var(--nav-height);

@@ -18,8 +18,7 @@ class Header extends HTMLElement {
             <button
               class="btn navbar-toggler p-0 border-0"
               type="button"
-              data-bs-toggle="offcanvas" 
-              data-bs-target="#collapseMenu" 
+              id="navbarToggler"
               aria-expanded="false" 
               aria-controls="collapseMenu"
               aria-label="Toggle navigation"
