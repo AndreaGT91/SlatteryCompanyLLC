@@ -21,6 +21,7 @@ $(() => {
   // Set onclick handler to open/close side menu when hamburger clicked on mobile
   $(".navbar-toggler").click(() => {
     $(".offcanvas-collapse")[0].classList.toggle("open");
+    console.log($("#collapseMenu"));
   });
 
   // Initialize Animate on Scroll library 
@@ -31,7 +32,7 @@ $(() => {
   $(".nav-link").find(".active").removeClass("active");
 
   console.log("Path: ", window.location.pathname);
-
+  
   if (window.location.pathname.includes("portfolio")) {
     $("#portfolio-link").addClass("active");
     $("#portfolio-link").parent().attr("aria-current", "page");
